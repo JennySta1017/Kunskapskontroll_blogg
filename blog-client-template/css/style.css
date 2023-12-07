@@ -2,6 +2,12 @@ body {
     background-color: rgb(241, 241, 193);
 }
 
+#adminLink {
+float: right;
+}
 
+#blogPost-list {
+    list-style: none;
+}
 
 
