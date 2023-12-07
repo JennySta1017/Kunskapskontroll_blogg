@@ -23,7 +23,7 @@ async function fillBlogPosts() {
         listItem.innerHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
-                <p><em>${post.author} <span class="date">${post.date}</em></span></p>
+                <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
                 <div class="tags"><b>tags:</b>
                     <span class="tag">${post.tags}</span>
                     <span class="tag">${post.tags}</span>
