@@ -1,1 +1,1 @@
-let links = document.querySelectorAll('#main-nav a');
+const links = document.querySelectorAll('#main-nav a');
