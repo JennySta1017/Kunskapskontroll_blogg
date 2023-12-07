@@ -18,7 +18,8 @@ async function fetchAllPosts() {
                 <td>${post.author}</td>
                 <td>${post.tags}</td>
                 <td>${postDate.getFullYear()}-${postDate.getMonth()}-${postDate.getDate()}  ${postDate.toLocaleTimeString().slice(0, -3)}</td>
-                <td><div id="manage-links">
+                <td>
+                <div id="manage-links">
                 <a href="update-pun.html?id=${post._id}">Update</a> |
                 <a href="#" class = "delete-links" data-id="${post._id}">Delete</a>
                 </div></td>
@@ -28,6 +29,25 @@ async function fetchAllPosts() {
 
     } catch(error) {
         console.log(error)
+    }
+
+
+    const deleteLinks = document.getElementsByClassName('delete-links');
+    for (let link of deleteLinks) {
+        link.addEventListener('click', async function(e) {
+            if (e.target.classname === 'delete-links') {
+
+            }
+            e.preventDefault();
+            let postId = e.target.dataset.id;
+            let response = await fetch('https://blog-api-assignment.up.railway.app/posts/' + postId, {
+                method: `DELETE`
+            });
+            
+            if(response.ok) {
+                e.target.parentNode.parentNode.parentNode.remove();
+            }
+        })
     }
 
 }
