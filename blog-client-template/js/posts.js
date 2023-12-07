@@ -7,7 +7,8 @@ async function fetchBlogPost() {
 
     } catch (error) {
         console.log('Something wrong happened: ', error);
-        return [];
+        
+        return []; // OSÄKER PÅ DENNA 
     }
 }
 
@@ -20,17 +21,17 @@ async function fillBlogPosts() {
         const listItem = document.createElement('li');
         listItem.classList.add('blog-post-item');
         listItem.innerHTML = `
-        <li class="blog-post-item">
-        <h3>${post.title}</h3>
-            <p>${post.author}<br><span class="date">${post.date}</span></p>
-            <div class="tags">
-            <span class="tag">${post.tag}</span>
-            <span class="tag">${post.tag}</span>
-        </div>
-            <p>${post.content}</p>
-          
+            <li class="blog-post-item">
+            <h2>${post.title}</h2>
+                <p><em>${post.author} <span class="date">${post.date}</em></span></p>
+                <div class="tags"><b>tags:</b>
+                    <span class="tag">${post.tags}</span>
+                    <span class="tag">${post.tags}</span>
+                </div>
+                <p>${post.content}</p>
+            
 
-        </li><hr>
+            </li><hr>
         `;
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
         blogPostList.appendChild(listItem);
@@ -38,3 +39,4 @@ async function fillBlogPosts() {
     });
 }
 fillBlogPosts();  
+
