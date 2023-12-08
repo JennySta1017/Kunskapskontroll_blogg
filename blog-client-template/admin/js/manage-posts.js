@@ -20,7 +20,7 @@ async function fetchAllPosts() {
                 <td>${postDate.getFullYear()}-${postDate.getMonth()}-${postDate.getDate()}  ${postDate.toLocaleTimeString().slice(0, -3)}</td>
                 <td>
                 <div id="manage-links">
-                <a href="update-pun.html?id=${post._id}">Update</a> |
+                <a href="update-post.html?id=${post._id}">Update</a> |
                 <a href="#" class = "delete-links" data-id="${post._id}">Delete</a>
                 </div></td>
                
