@@ -1,7 +1,7 @@
 // Funktion för att hämta blogginlägg från API:et
 
 async function fetchBlogPost() {
-    
+
     try {
         const response = await fetch('https://blog-api-assignment.up.railway.app/posts');
         if (!response.ok) {
@@ -27,21 +27,29 @@ async function fillBlogPosts() {
     // felhantering för taggarna 
 
     blogPosts.forEach((post) => {
+        
         const listItem = document.createElement('li');
         listItem.classList.add('blog-post-item');
+
         listItem.innerHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
                 <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
-                <div class="tags"><b>tags:</b>
-                    ${post.tags ? post.tags.map(tag => `<span class="tag">${tag}</span>`).join(''): ''}
-                </div>
+                ${post.tags && post.tags.length > 0 ? 
+                    `<p class="tags"><b>tags: </b> ${post.tags.join(', ')}</p>` 
+                    : ''}
                 <p>${post.content}</p>
             
 
             </li><hr>
         `;
         
+
+        // OM MAN VILL HA FLERA TAGGAR HUR FÅR MAN TILL DET SAMT
+        // SKRIVER PÅ DETTA VIS OM DET STÅR SÅ:  
+        // "Internet", "Food", "Travel", "Culture"
+
+
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
         blogPostList.appendChild(listItem);
         //document.getElementById('blogPost-list').innerHTML = punsListHTML;
