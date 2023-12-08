@@ -32,11 +32,10 @@ async function fillBlogPosts() {
         // Begränsa till de första 100 tecknen
         const  first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
 
-         // Skapa en sträng med citationstecken runt vissa taggar
+         // Skapa en sträng med citationstecken runt taggarna
          const tagsString = post.tags && post.tags.length > 0
-         ? `<p class="indent"><b>Tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
+         ? `<p class="indent"><b>tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
          : '';
-
 
         listItem.innerHTML = `
             <li class="blog-post-item">
@@ -47,10 +46,7 @@ async function fillBlogPosts() {
             </li><hr>
         `;
         
-
-        // OM MAN VILL HA FLERA TAGGAR HUR FÅR MAN TILL DET SAMT
-        // SKRIVER PÅ DETTA VIS OM DET STÅR SÅ:  
-        // "Internet", "Food", "Travel", "Culture"
+        // DUBBELKOLLA HTML STRUKTUREN SÅ DET STÅR RÄTT
 
 
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
