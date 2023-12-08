@@ -29,6 +29,10 @@ async function fillBlogPosts() {
         const listItem = document.createElement('li');
         listItem.classList.add('blog-post-item');
 
+        // Begränsa till de första 100 tecknen
+        const  first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
+
+
         listItem.innerHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
@@ -36,9 +40,7 @@ async function fillBlogPosts() {
                 ${post.tags && post.tags.length > 0 ? 
                     `<p class="tags"><b>tags: </b> ${post.tags.join(', ')}</p>` 
                     : ''}
-                <p>${post.content}</p>
-            
-
+                <p>${first100Characters}</p>
             </li><hr>
         `;
         
