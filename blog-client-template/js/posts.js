@@ -1,7 +1,12 @@
 // Funktion för att hämta blogginlägg från API:et
+
 async function fetchBlogPost() {
+    
     try {
         const response = await fetch('https://blog-api-assignment.up.railway.app/posts');
+        if (!response.ok) {
+            throw new Error('Opps something whent wrong. We will dispatch a group of monkeys to fix your problem!')
+        }
         const data = await response.json();
         return data;
 
@@ -13,11 +18,13 @@ async function fetchBlogPost() {
 }
 
 // Funktion för att fylla i HTML med blogginläggsdata
+
 async function fillBlogPosts() {
+
     const blogPostList = document.getElementById('blogPost-list');
     const blogPosts = await fetchBlogPost();
 
-    // felhantering if sats???
+    // felhantering för taggarna 
 
     blogPosts.forEach((post) => {
         const listItem = document.createElement('li');
@@ -27,13 +34,14 @@ async function fillBlogPosts() {
             <h2>${post.title}</h2>
                 <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
                 <div class="tags"><b>tags:</b>
-                    <span class="tag">${post.tags}</span>
+                    ${post.tags ? post.tags.map(tag => `<span class="tag">${tag}</span>`).join(''): ''}
                 </div>
                 <p>${post.content}</p>
             
 
             </li><hr>
         `;
+        
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
         blogPostList.appendChild(listItem);
         //document.getElementById('blogPost-list').innerHTML = punsListHTML;
