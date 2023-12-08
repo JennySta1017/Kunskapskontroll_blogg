@@ -17,6 +17,8 @@ async function fillBlogPosts() {
     const blogPostList = document.getElementById('blogPost-list');
     const blogPosts = await fetchBlogPost();
 
+    // felhantering if sats???
+
     blogPosts.forEach((post) => {
         const listItem = document.createElement('li');
         listItem.classList.add('blog-post-item');
@@ -25,7 +27,6 @@ async function fillBlogPosts() {
             <h2>${post.title}</h2>
                 <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
                 <div class="tags"><b>tags:</b>
-                    <span class="tag">${post.tags}</span>
                     <span class="tag">${post.tags}</span>
                 </div>
                 <p>${post.content}</p>
