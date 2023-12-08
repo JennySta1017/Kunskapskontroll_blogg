@@ -3,31 +3,47 @@ body {
 }
 
 #main-container {
-    width: 100%;
+    width: 80%;
     height: 100vh;
+    margin: 0px auto;
 }
 
 #content {
-    margin: 50px auto;
-    width:80%;
-    max-width: 800px;
+   
+    width:100%;
+    margin: 0px auto;
+    
 }
 
 .blog-page-link,
  #create-post-link {
     float: right;
+   margin-right: 10%;
     
 }
 
 table {
-    width: 100%;
-    max-width: 800px;
-    border: 1px solid black;
+    width: 80%;
+    margin: 20px auto;
+    border: 3px solid darkgray;
+    background-color: antiquewhite;
+    
+    
+
 } 
+
+hr {
+    width: 80%;
+}
+
+h1 {
+    margin-left: 10%;
+}
 
 td {
     
-    border: 1px solid black;
+    border: 1px dotted black;
+    padding: 10px;
 }
 
 thead {
@@ -38,8 +54,8 @@ thead {
      text-align: center;
 }
 
-#container {
-    width: 80%;
+#create-container {
+    width: 100%;
     max-width: 800px;
     margin: 20px auto;
 
