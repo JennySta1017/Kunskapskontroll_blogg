@@ -24,10 +24,8 @@ async function fillBlogPosts() {
     const blogPostList = document.getElementById('blogPost-list');
     const blogPosts = await fetchBlogPost();
 
-    // felhantering för taggarna 
-
     blogPosts.forEach((post) => {
-        
+
         const listItem = document.createElement('li');
         listItem.classList.add('blog-post-item');
 
