@@ -32,10 +32,10 @@ async function fillBlogPosts() {
         // Begränsa till de första 100 tecknen
         const  first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
 
-         // Skapa en sträng med citationstecken runt taggarna
-         const tagsString = post.tags && post.tags.length > 0
-         ? `<p class="indent"><b>tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
-         : '';
+        // Skapa en sträng med citationstecken runt taggarna
+        const tagsString = post.tags && post.tags.length > 0
+        ? `<p class="indent"><b>tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
+        : '';
 
         listItem.innerHTML = `
             <li class="blog-post-item">
