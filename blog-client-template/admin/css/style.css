@@ -13,7 +13,7 @@ body {
     max-width: 800px;
 }
 
-#blog-page-link,
+.blog-page-link,
  #create-post-link {
     float: right;
     
@@ -36,4 +36,34 @@ thead {
 
 #manage-links {
      text-align: center;
+}
+
+#container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+
+}
+
+#create-post-form {
+    width: 100%;
+    padding: 10px;
+}
+
+input, 
+textarea,
+select {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+input,
+select {
+    padding: 10px;
+}
+
+select {
+    height: 150px;
 }
