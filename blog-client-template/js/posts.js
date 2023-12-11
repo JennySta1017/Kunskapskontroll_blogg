@@ -42,7 +42,7 @@ async function fillBlogPosts() {
             <h2>${post.title}</h2>
                 <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
                 ${tagsString}
-                <p>${first100Characters}</p>
+                <p>${first100Characters}<a href="post.html?id=${post._id}"> ...read more</a></p>
             </li><hr>
         `;
         
