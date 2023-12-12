@@ -6,8 +6,6 @@ async function createPost(e) {
   
   let form = e.target;
 
-  
-
   try {
     let tagsSelect = document.getElementById("tags");
     let selectedTags = Array.from(tagsSelect.selectedOptions).map(option => option.value);
@@ -17,10 +15,7 @@ async function createPost(e) {
         "author": document.getElementById('author').value,
         "content":document.getElementById('content-textarea').value,
         "tags": selectedTags
-
     };
-
-    
 
     await fetch('https://blog-api-assignment.up.railway.app/posts', {
       method: "POST", // GET, POST, PATCH, DELETE, etc.
@@ -29,7 +24,6 @@ async function createPost(e) {
       },
       body: JSON.stringify(data)
     });
-
 
    location.replace('index.html');
 
