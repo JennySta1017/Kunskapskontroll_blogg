@@ -14,3 +14,8 @@ float: right;
     list-style: none;
 }
 
+/* Styling till post-sidan /Jenny */
+#head-container {
+    width: 80%;
+    margin-left: 20px;
+}

@@ -7,7 +7,6 @@ async function fetchAllPosts() {
     try {
         const response = await fetch('https://blog-api-assignment.up.railway.app/posts');
         const blogPosts = await response.json();
-
         
         for (let post of blogPosts) {
            let postDate = new Date(post.date)
@@ -23,7 +22,7 @@ async function fetchAllPosts() {
                 <a href="update-pun.html?id=${post._id}">Update</a> |
                 <a href="#" class = "delete-links" data-id="${post._id}">Delete</a>
                 </div></td>
-               
+               </tr>
             `
         }
 
@@ -31,13 +30,12 @@ async function fetchAllPosts() {
         console.log(error)
     }
 
-
     const deleteLinks = document.getElementsByClassName('delete-links');
     for (let link of deleteLinks) {
         link.addEventListener('click', async function(e) {
-            if (e.target.classname === 'delete-links') {
+           /*  if (e.target.classname === 'delete-links') {
 
-            }
+            } */
             e.preventDefault();
             let postId = e.target.dataset.id;
             let response = await fetch('https://blog-api-assignment.up.railway.app/posts/' + postId, {
