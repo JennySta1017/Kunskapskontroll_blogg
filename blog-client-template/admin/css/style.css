@@ -28,6 +28,7 @@ table {
     margin: 20px auto;
     border: 2px solid rgb(49, 46, 46);
     background-color: antiquewhite;
+    
 } 
 
 h1 {
@@ -41,7 +42,7 @@ td {
 
 thead {
     font-weight: bold;
-    background-color: rgb(142, 142, 150);
+    background-color: rgb(198, 198, 203);
 }
 
 #manage-links {
