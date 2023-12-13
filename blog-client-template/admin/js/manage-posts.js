@@ -33,9 +33,6 @@ async function fetchAllPosts() {
     const deleteLinks = document.getElementsByClassName('delete-links');
     for (let link of deleteLinks) {
         link.addEventListener('click', async function(e) {
-           /*  if (e.target.classname === 'delete-links') {
-
-            } */
             e.preventDefault();
             let postId = e.target.dataset.id;
             let response = await fetch('https://blog-api-assignment.up.railway.app/posts/' + postId, {
