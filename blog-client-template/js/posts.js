@@ -37,6 +37,7 @@ async function fillBlogPosts() {
         ? `<p class="indent"><b>tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
         : '';
 
+        // Grundstrukturen på hur blogginlägget ska se ut i Js 
         listItem.innerHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
