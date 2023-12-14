@@ -26,26 +26,32 @@ async function fillBlogPosts() {
 
     blogPosts.forEach((post) => {
 
+        // Konvertera datumsträngen från API-responsen (post.date) till ett JS Date-objekt
+        const postDate = new Date(post.date); 
+
         // Begränsa till de första 100 tecknen
-        const  first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
+        const first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
+
+        // Skapa en sträng med datumet i det önskade formatet
+        const formattedDate = `${postDate.getFullYear()}-${postDate.getMonth() + 1}-${postDate.getDate()} ${postDate.toLocaleTimeString()}`;
 
         // Skapa en sträng med citationstecken runt taggarna
         const tagsString = post.tags && post.tags.length > 0
         ? `<p class="indent"><b>tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
         : '';
 
-        // Grundstrukturen på hur blogginlägget ska se ut i Js 
+        // Grundstrukturen på hur blogginlägget ska se ut 
         const listItemHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
-                <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
+                <p><em>${post.author} | <span class="date">${formattedDate}</em></span></p>
                 ${tagsString}
                 <p>${first100Characters}<a href="post.html?id=${post._id}"> ...read more</a></p>
             </li><hr>
         `;
 
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
-        // och Lägga till HTML-strängen i containern
+        // Lägga till HTML-strängen i containern
         blogPostsContainer.innerHTML += listItemHTML;
     });
 }
