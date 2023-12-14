@@ -1,5 +1,5 @@
-// Funktion för att hämta blogginlägg från API:et
 
+// Funktion för att hämta blogginlägg från API:et
 async function fetchBlogPost() {
 
     try {
@@ -13,12 +13,12 @@ async function fetchBlogPost() {
     } catch (error) {
         console.log('Something wrong happened: ', error);
         
-        return []; // OSÄKER PÅ DENNA 
+        // Returnerar en tom array, om det uppstår fel i hämtningen av APIet 
+        return []; 
     }
 }
 
 // Funktion för att fylla i HTML med blogginläggsdata
-
 async function fillBlogPosts() {
 
     const blogPostList = document.getElementById('blogPost-list');
@@ -54,5 +54,6 @@ async function fillBlogPosts() {
         //document.getElementById('blogPost-list').innerHTML = punsListHTML;
     });
 }
+
 fillBlogPosts();  
 
