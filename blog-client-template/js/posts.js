@@ -21,13 +21,10 @@ async function fetchBlogPost() {
 // Funktion för att fylla i HTML med blogginläggsdata
 async function fillBlogPosts() {
 
-    const blogPostList = document.getElementById('blogPost-list');
+    const blogPostsContainer = document.getElementById('blogPost-list');
     const blogPosts = await fetchBlogPost();
 
     blogPosts.forEach((post) => {
-
-        const listItem = document.createElement('li');
-        listItem.classList.add('blog-post-item');
 
         // Begränsa till de första 100 tecknen
         const  first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
@@ -38,7 +35,7 @@ async function fillBlogPosts() {
         : '';
 
         // Grundstrukturen på hur blogginlägget ska se ut i Js 
-        listItem.innerHTML = `
+        const listItemHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
                 <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
@@ -46,13 +43,10 @@ async function fillBlogPosts() {
                 <p>${first100Characters}<a href="post.html?id=${post._id}"> ...read more</a></p>
             </li><hr>
         `;
-        
-        // DUBBELKOLLA HTML STRUKTUREN SÅ DET STÅR RÄTT
-
 
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
-        blogPostList.appendChild(listItem);
-        //document.getElementById('blogPost-list').innerHTML = punsListHTML;
+        // och Lägga till HTML-strängen i containern
+        blogPostsContainer.innerHTML += listItemHTML;
     });
 }
 
