@@ -1,5 +1,5 @@
-// Funktion för att hämta blogginlägg från API:et
 
+// Funktion för att hämta blogginlägg från API:et
 async function fetchBlogPost() {
 
     try {
@@ -13,46 +13,48 @@ async function fetchBlogPost() {
     } catch (error) {
         console.log('Something wrong happened: ', error);
         
-        return []; // OSÄKER PÅ DENNA 
+        // Returnerar en tom array, om det uppstår fel i hämtningen av APIet 
+        return []; 
     }
 }
 
 // Funktion för att fylla i HTML med blogginläggsdata
-
 async function fillBlogPosts() {
 
-    const blogPostList = document.getElementById('blogPost-list');
+    const blogPostsContainer = document.getElementById('blogPost-list');
     const blogPosts = await fetchBlogPost();
 
     blogPosts.forEach((post) => {
 
-        const listItem = document.createElement('li');
-        listItem.classList.add('blog-post-item');
+        // Konvertera datumsträngen från API-responsen (post.date) till ett JS Date-objekt
+        const postDate = new Date(post.date); 
 
         // Begränsa till de första 100 tecknen
-        const  first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
+        const first100Characters = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
+
+        // Skapa en sträng med datumet i det önskade formatet
+        const formattedDate = `${postDate.getFullYear()}-${postDate.getMonth() + 1}-${postDate.getDate()} ${postDate.toLocaleTimeString()}`;
 
         // Skapa en sträng med citationstecken runt taggarna
         const tagsString = post.tags && post.tags.length > 0
         ? `<p class="indent"><b>tags:</b> ${post.tags.map(tag => `"${tag}"`).join(', ')}</p>`
         : '';
 
-        listItem.innerHTML = `
+        // Grundstrukturen på hur blogginlägget ska se ut 
+        const listItemHTML = `
             <li class="blog-post-item">
             <h2>${post.title}</h2>
-                <p><em>${post.author} | <span class="date">${post.date}</em></span></p>
+                <p><em>${post.author} | <span class="date">${formattedDate}</em></span></p>
                 ${tagsString}
                 <p>${first100Characters}<a href="post.html?id=${post._id}"> ...read more</a></p>
             </li><hr>
         `;
-        
-        // DUBBELKOLLA HTML STRUKTUREN SÅ DET STÅR RÄTT
-
 
         // Anropa funktionen för att fylla i blogginläggsdata när sidan laddas
-        blogPostList.appendChild(listItem);
-        //document.getElementById('blogPost-list').innerHTML = punsListHTML;
+        // Lägga till HTML-strängen i containern
+        blogPostsContainer.innerHTML += listItemHTML;
     });
 }
+
 fillBlogPosts();  
 
