@@ -78,3 +78,9 @@ select {
 select {
     height: 150px;
 }
+/* Update post knappen (Emmas) */
+#updatePostForm button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px; /* Justera paddings för att ändra storleken */
+    font-size: 16px;   /* Ändra fontstorleken om det behövs */
+}
